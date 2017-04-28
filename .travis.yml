@@ -4,5 +4,5 @@ node_js:
 
 install: npm install
 script:
-  - npm run prod
+  - npm run build
   - bash ./.travis-ghpages-deploy.sh
