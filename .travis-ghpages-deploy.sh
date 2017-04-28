@@ -1,3 +1,4 @@
+cp index.html dist/index.html
 cd dist
 git init
 
