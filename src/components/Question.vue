@@ -1,7 +1,7 @@
 <template>
   <section>
     <h1>{{ question.text }}</h1>
-    <img :src="loadImage(question.image)" alt="">
+    <img :src="question.image" alt="">
     <div v-for="answer in question.answers">
       <input type="submit" @click="submitChoice(answer)" v-bind:value="answer.text">
     </div>
@@ -31,10 +31,7 @@
         console.log(this.answerCorrect);
         this.choiceChosen = false;
       },
-      shuffleAnswers: shuffle,
-      loadImage (name) {
-        return require("../assets/" + name)
-      }
+      shuffleAnswers: shuffle
     }
   }
 </script>
@@ -56,5 +53,8 @@
     -ms-flex-direction: column;
     -o-flex-direction: column;
     flex-direction: column;
+  }
+  img {
+    height: 20em;
   }
 </style>
