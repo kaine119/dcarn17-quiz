@@ -2,6 +2,8 @@
 
 > Quiz for D'Carn 2017
 
+[![Build Status](https://travis-ci.org/kaine119/dcarn17-quiz.svg?branch=master)](https://travis-ci.org/kaine119/dcarn17-quiz)
+
 ## Build Setup
 
 ``` bash
