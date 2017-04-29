@@ -5,7 +5,7 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    publicPath: '/',
     filename: 'build.js'
   },
   module: {
@@ -30,9 +30,10 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: '[name].[ext]?[hash]'
+              name: '[name].[ext]'
             }
           },
+
           {
             loader: 'image-webpack-loader',
             options: {
@@ -40,7 +41,7 @@ module.exports = {
                 quality: 60
               },
               pngquant: {
-                quality: "60-90",
+                quality: "50-60",
                 speed: 4
               }
             }

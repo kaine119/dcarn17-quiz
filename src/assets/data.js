@@ -1,8 +1,11 @@
+// images are expected to be in src/assets/question-imgs.
+// DO NOT add beginning '/'
+
 export default {
   questions: [
     {
       text: "Where is this location?",
-      image: "http://i.imgur.com/gjHAjb7.png",
+      image: "gjHAjb7.png",
       answers: [
         { text: "Former Dunman High School", correct: true },
         { text: "Chung Cheng High School (Main)", correct: false },
@@ -11,7 +14,7 @@ export default {
     },
     {
       text: "Dunman High School's logo was designed by:",
-      image: "http://edumatters.sg/wp-content/uploads/2014/04/Dunman-High-School2-1024x1024.jpg",
+      image: "Dunman-High-School2-1024x1024.jpg",
       answers: [
         { text: "Mr. Sun Hwan Sin", correct: true },
         { text: "Liu Kang", correct: false },
@@ -20,7 +23,7 @@ export default {
     },
     {
       text: "What does this image show?",
-      image: "http://68.media.tumblr.com/tumblr_leqrx5hnZn1qa5di0.jpg",
+      image: "tumblr_leqrx5hnZn1qa5di0.jpg",
       answers: [      
         { text: "Dunman High School’s school song", correct: true },
         { text: "Dunman High School’s vision", correct: false },
