@@ -1,3 +1,4 @@
+gm version
 cd dist
 git init
 
