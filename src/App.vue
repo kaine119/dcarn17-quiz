@@ -11,6 +11,8 @@ import shuffle from './utils/shuffle'
 import Question from './components/Question.vue';
 import Score from './components/Score.vue'
 
+require('material-design-lite');
+
 export default {
   name: 'app',
   data () {
@@ -49,8 +51,10 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://code.getmdl.io/1.2.1/material.blue-red.min.css');
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: -webkit-flex;
@@ -62,7 +66,7 @@ export default {
   -ms-align-items: center;
   align-items: center;
   color: #2c3e50;
-  margin-top: 60px;
+  padding: 1em;
 }
 
 h1, h2 {

@@ -1,16 +1,39 @@
 <template>
   <section>
-    <h1>{{ question.text }}</h1>
-    <img :src="loadQuestionImage(question.image)" alt="">
-    <div v-for="answer in question.answers">
-      <input type="submit" @click="submitChoice(answer)" v-bind:value="answer.text">
+    <!-- Card with question in it -->
+    <div id="question-block" class="mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title">
+        <h1 class="mdl-card__title-text">{{ question.text }}</h1>
+      </div>
+      <div class="mdl-card__media" background="white">
+        <img width="120" :src="loadQuestionImage(question.image)" alt="">
+      </div>
+      <div class="mdl-card__actions" v-if="!choiceChosen">
+        <a v-for="answer in question.answers" @click="!choiceChosen && submitChoice(answer, $event)" href="#" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          {{ answer.text }}
+        </a>
+      </div>
+      <div class="mdl-card__supporting-text" v-if="choiceChosen">
+        <h6 v-if="!chosenAnswer.correct">You chose:</h6>
+        <h4 v-if="!chosenAnswer.correct" v-bind:class="{'mdl-color-text--red-500': !chosenAnswer.correct}">{{ chosenAnswer.text }}</h4>
+        <h6 v-if="!chosenAnswer.correct">The correct answer is</h6>
+        <h6 v-if="chosenAnswer.correct">You're correct! The answer is</h6>
+        <h4 class="mdl-color-text--green-500" v-for="answer in question.answers" v-if="answer.correct">{{ answer.text }}</h4>
+      </div>
+      
     </div>
-    <div class="nextButton" @click="emitChoice()" v-if="choiceChosen" :class="{correct: answerCorrect}"><h1>next</h1></div>
+    
+    <!-- FAB with right arrow -->
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" @click="emitChoice()" v-if="choiceChosen">
+      <i class="material-icons">arrow_forward</i>
+    </button>
   </section>
 </template>
 
 <script>
   import shuffle from '../utils/shuffle';
+  let green = 'mdl-color--green-400';
+  let red = 'mdl-color--red-500';
 
   export default {
     name: 'questionBlock',
@@ -18,18 +41,30 @@
     data () { 
       return { 
         choiceChosen: false, 
-        answerCorrect: null
+        answerCorrect: null,
+        chosenAnswer: null,
+        buttonSelected: null,
+        correctAnswer: null,
       }; 
     },
     methods: {
-      submitChoice (answer) {
+      submitChoice (answer, e) {
         this.choiceChosen = true;
+        this.chosen = true;
         this.answerCorrect = answer.correct;
+        this.buttonSelected = e.target
+        this.chosenAnswer = answer
+        this.buttonSelected.classList.add( answer.correct ? green : red);
+
       },
       emitChoice () {
-        this.$emit('choice', this.answerCorrect);
-        console.log(this.answerCorrect);
         this.choiceChosen = false;
+        this.$emit('choice', this.answerCorrect);
+        this.choiceChosen = false; 
+        this.answerCorrect = null;
+        this.chosenAnswer = null;
+        this.buttonSelected = null;
+        this.correctAnswer = null;
       },
       shuffleAnswers: shuffle,
       loadQuestionImage (name) {
@@ -41,8 +76,7 @@
 </script>
 
 <style>
-  .nextButton { background: red; height: 3em; width: 25%; cursor: pointer;}
-  .correct { background: green; }
+  .nextButton { height: 3em; width: 25%; cursor: pointer;}
   section, .nextButton {
     width: 50%;
     display: -webkit-flex;
@@ -59,7 +93,13 @@
     -o-flex-direction: column;
     flex-direction: column;
   }
+  #question-block {
+    width: 50%;
+  }
   img {
-    height: 20em;
+    width: 100%;
+  }
+  button.mdl-button--fab {
+    margin-top: 1em
   }
 </style>
