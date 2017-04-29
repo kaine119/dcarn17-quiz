@@ -1,18 +1,27 @@
 <template>
   <section>
+
+
     <!-- Card with question in it -->
-    <div id="question-block" class="mdl-card mdl-shadow--2dp">
+    <div id="question-block" class=" mdl-card mdl-shadow--2dp">
+
       <div class="mdl-card__title">
         <h1 class="mdl-card__title-text">{{ question.text }}</h1>
       </div>
+
       <div class="mdl-card__media" background="white">
-        <img width="120" :src="loadQuestionImage(question.image)" alt="">
+        <img width="120" :src="loadQuestionImage(question.image)" alt="" />
       </div>
-      <div class="mdl-card__actions" v-if="!choiceChosen">
-        <a v-for="answer in question.answers" @click="!choiceChosen && submitChoice(answer, $event)" href="#" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-          {{ answer.text }}
-        </a>
+
+      <div class="mdl-card__supporting-text mdl-card--border" v-if="!choiceChosen">
+        
+        <div v-for="answer in question.answers" @click="!choiceChosen && submitChoice(answer, $event)" href="#" class="answer mdl-js-button mdl-js-ripple-effect ">
+
+          <h4>{{ answer.text }}</h4>
+        </div>
+
       </div>
+
       <div class="mdl-card__supporting-text" v-if="choiceChosen">
         <h6 v-if="!chosenAnswer.correct">You chose:</h6>
         <h4 v-if="!chosenAnswer.correct" v-bind:class="{'mdl-color-text--red-500': !chosenAnswer.correct}">{{ chosenAnswer.text }}</h4>
@@ -22,9 +31,10 @@
       </div>
       
     </div>
+
     
     <!-- FAB with right arrow -->
-    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" @click="emitChoice()" v-if="choiceChosen">
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-shadow--4dp" @click="emitChoice()" v-if="choiceChosen">
       <i class="material-icons">arrow_forward</i>
     </button>
   </section>
@@ -76,9 +86,8 @@
 </script>
 
 <style>
-  .nextButton { height: 3em; width: 25%; cursor: pointer;}
-  section, .nextButton {
-    width: 50%;
+  section {
+    width: 100%;
     display: -webkit-flex;
     display: -moz-flex;
     display: -ms-flex;
@@ -100,6 +109,22 @@
     width: 100%;
   }
   button.mdl-button--fab {
-    margin-top: 1em
+    margin-top: 1em;
+  }
+  .answer {
+    cursor: pointer;
+  }
+  @media (max-width: 768px) {
+    button.mdl-button--fab {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      z-index: 10;
+    }
+    #question-block {
+      width: 100%;
+    }
   }
 </style>

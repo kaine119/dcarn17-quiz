@@ -1,7 +1,7 @@
 <template>
   <section>
     <h1 class="score">Score: {{ score }}</h1>
-    <input type="submit" value="Play again" @click="restart()">   
+    <button class="mdl-button mdl-button--raised mdl-button--colored" @click="restart()">Play Again</button>
   </section>
 </template>
 
@@ -27,6 +27,10 @@
     display: flex;
     justify-content: center;
     align-content: center;
-
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    -o-flex-direction: column;
+    flex-direction: column;
   }
 </style>
