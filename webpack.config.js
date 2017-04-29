@@ -25,15 +25,14 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpe?g|gif|svg)$/,
         use: [
           {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]'
             }
-          },
-
+          },          
           {
             loader: 'image-webpack-loader',
             options: {
@@ -42,8 +41,14 @@ module.exports = {
               },
               pngquant: {
                 quality: "50-60",
-                speed: 4
+                strip: true
               }
+            }
+          },
+          {
+            loader: 'image-maxsize-webpack-loader',
+            options: {
+              'max-width': 600
             }
           }
         ]
