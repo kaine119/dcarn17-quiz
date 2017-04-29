@@ -40,7 +40,7 @@ export default {
       ]
     },
     {
-      text: "The above mascots for Dunman High School are known as...",
+      text: "These mascots for Dunman High School are known as...",
       image: "fEd86dW.png",
       answers: [
         { text: "Dunman Dolls", correct: true },
