@@ -5,7 +5,7 @@
     <div v-for="answer in question.answers">
       <input type="submit" @click="submitChoice(answer)" v-bind:value="answer.text">
     </div>
-    <div class="nextButton" @click="emitChoice()" v-if="choiceChosen"><h1>next</h1></div>
+    <div class="nextButton" @click="emitChoice()" v-if="choiceChosen" :class="{correct: answerCorrect}"><h1>next</h1></div>
   </section>
 </template>
 
@@ -41,7 +41,8 @@
 </script>
 
 <style>
-  .nextButton { background: cornflowerblue; height: 3em; width: 25%; cursor: pointer;}
+  .nextButton { background: red; height: 3em; width: 25%; cursor: pointer;}
+  .correct { background: green; }
   section, .nextButton {
     width: 50%;
     display: -webkit-flex;
