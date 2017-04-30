@@ -11,7 +11,7 @@ export default {
         { text: "Chung Cheng High School (Main)", correct: false },
         { text: "Bukit Panjang High School", correct: false }
       ],
-      time: 5
+      time: 60
     },
     {
       text: "Dunman High School's logo was designed by:",
@@ -21,7 +21,7 @@ export default {
         { text: "Liu Kang", correct: true },
         { text: "Mr. Tan Thiam Hock", correct: false }
       ],
-      time: 10
+      time: 60
     },
     {
       text: "What does this image show?",
@@ -31,7 +31,7 @@ export default {
         { text: "Dunman High School’s vision", correct: false },
         { text: "Dunman High School’s school crest", correct: false }
       ],
-      time: 8
+      time: 60
     },
     {
       text: "What do you think Dunman High School’s metal buttons symbolise?",
@@ -41,7 +41,7 @@ export default {
         { text: "Dunman High School’s traditional Chinese culture", correct: true },
         { text: "Dunman High School’s status as an autonomous school", correct: false }
       ],
-      time: 7
+      time: 60
     },
     {
       text: "These mascots for Dunman High School are known as...",
@@ -51,7 +51,7 @@ export default {
         { text: "Dunman Figurines", correct: false },
         { text: "Dunman Puppets", correct: false }
       ],
-      time: 4
+      time: 60
     },
     {
       text: "Dunman High School celebrated its 60th anniversary in the year...",
@@ -61,7 +61,7 @@ export default {
         { text: "2007", correct: false },
         { text: "2016", correct: true }
       ],
-      time: 5
+      time: 60
     },
     {
       text: "The above photo is taken at Dunman High School’s...",
@@ -71,7 +71,7 @@ export default {
         { text: "Auditorium", correct: false },
         { text: "PAC", correct: false }
       ],
-      time: 7
+      time: 60
     },
     {
       text: "Dunman High School’s Performing Arts Centre (PAC) can sit up to...",
@@ -81,7 +81,7 @@ export default {
         { text: "400 people", correct: false },
         { text: "800 people", correct: true }
       ],
-      time: 8
+      time: 60
     },
     {
       text: "This was layout of the former Dunman High School campus. \n Which of the following building names are no longer in use?",
@@ -91,7 +91,7 @@ export default {
         { text: "晓学楼", correct: true },
         { text: "正心楼", correct: false }
       ],
-      time: 10
+      time: 60
     }
   ]
 };
