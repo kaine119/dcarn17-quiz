@@ -3,7 +3,7 @@
 
 
     <!-- Card with question in it -->
-    <div id="question-block" class=" mdl-card mdl-shadow--2dp">
+    <div id="question-block" class="mdl-card mdl-shadow--2dp">
 
       <div class="mdl-card__title">
         <h1 class="mdl-card__title-text">{{ question.text }}</h1>
@@ -17,9 +17,8 @@
 
       <div class="mdl-card__supporting-text mdl-card--border" v-if="!choiceChosen">
 
-        <div v-for="answer in question.answers" @click="!choiceChosen && submitChoice(answer, $event)" href="#" class="answer mdl-js-button mdl-js-ripple-effect ">
-
-          <h4>{{ answer.text }}</h4>
+        <div v-for="answer in question.answers"  href="#" class="answer">
+          <h4 @click="submitChoice(answer)">{{ answer.text }}</h4>
         </div>
 
       </div>
@@ -93,10 +92,11 @@
       }
     },
     methods: {
-      submitChoice (answer, e) {
+      submitChoice (a) {
+        console.log(a)
         this.choiceChosen = true;
-        this.answerCorrect = answer.correct;
-        this.chosenAnswer = answer
+        this.answerCorrect = a.correct;
+        this.chosenAnswer = a;
         window.clearInterval(progInterval);
       },
       emitChoice () {
@@ -149,6 +149,7 @@
   }
   .answer {
     cursor: pointer;
+    margin-bottom: 1em;
   }
   @media (max-width: 768px) {
     button.mdl-button--fab {
