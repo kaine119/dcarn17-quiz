@@ -13,8 +13,10 @@
         <img width="120" :src="loadQuestionImage(question.image)" alt="" />
       </div>
 
+      <div id="progress" class="mdl-progress mdl-js-progress"></div>
+
       <div class="mdl-card__supporting-text mdl-card--border" v-if="!choiceChosen">
-        
+
         <div v-for="answer in question.answers" @click="!choiceChosen && submitChoice(answer, $event)" href="#" class="answer mdl-js-button mdl-js-ripple-effect ">
 
           <h4>{{ answer.text }}</h4>
@@ -23,10 +25,14 @@
       </div>
 
       <div class="mdl-card__supporting-text" v-if="choiceChosen">
-        <h6 v-if="!chosenAnswer.correct">You chose:</h6>
-        <h4 v-if="!chosenAnswer.correct" v-bind:class="{'mdl-color-text--red-500': !chosenAnswer.correct}">{{ chosenAnswer.text }}</h4>
-        <h6 v-if="!chosenAnswer.correct">The correct answer is</h6>
-        <h6 v-if="chosenAnswer.correct">You're correct! The answer is</h6>
+        <h6 v-if="(timeLeft > 0) && !chosenAnswer.correct">You chose:</h6>
+        <h4 v-if="(timeLeft > 0) && !chosenAnswer.correct" v-bind:class="{'mdl-color-text--red-500': !chosenAnswer.correct}">{{ chosenAnswer.text }}</h4>
+        <h6 v-if="(timeLeft > 0) && !chosenAnswer.correct">The correct answer is</h6>
+        <h6 v-if="(timeLeft > 0) && chosenAnswer.correct">You're correct! The answer is</h6>
+        <div v-if="timeLeft <= 0">
+          <h4>You ran out of time!</h4>
+          <h6>The answer is</h6>
+        </div>
         <h4 class="mdl-color-text--green-500" v-for="answer in question.answers" v-if="answer.correct">{{ answer.text }}</h4>
       </div>
       
@@ -44,6 +50,7 @@
   import shuffle from '../utils/shuffle';
   let green = 'mdl-color--green-400';
   let red = 'mdl-color--red-500';
+  let progInterval;
 
   export default {
     name: 'questionBlock',
@@ -55,17 +62,42 @@
         chosenAnswer: null,
         buttonSelected: null,
         correctAnswer: null,
+        timeLeft: 10
       }; 
+    },
+    mounted () {
+      let prog = document.querySelector("#progress");
+      let totalTime = 10;
+      this.timeLeft = totalTime;
+      componentHandler.upgradeAllRegistered();
+      
+
+      progInterval = window.setInterval(() => {
+        if (this.timeLeft <= 0) { ; return this.timeout(); }
+        prog.MaterialProgress.setProgress(this.timeLeft / totalTime * 100);
+        this.timeLeft = this.timeLeft - 0.1;
+
+      }, 100);
+    },
+    watch: {
+      question (val) {
+        let prog = document.querySelector("#progress");
+        let totalTime = this.question.time;
+        this.timeLeft = totalTime;
+        progInterval = window.setInterval(() => {
+          if (this.timeLeft <= 0) { return this.timeout(); }
+          prog.MaterialProgress.setProgress(this.timeLeft / totalTime * 100);
+          this.timeLeft = this.timeLeft - 0.1;
+          console.log("timing down")
+        }, 100);
+      }
     },
     methods: {
       submitChoice (answer, e) {
         this.choiceChosen = true;
-        this.chosen = true;
         this.answerCorrect = answer.correct;
-        this.buttonSelected = e.target
         this.chosenAnswer = answer
-        this.buttonSelected.classList.add( answer.correct ? green : red);
-
+        window.clearInterval(progInterval);
       },
       emitChoice () {
         this.choiceChosen = false;
@@ -78,8 +110,12 @@
       },
       shuffleAnswers: shuffle,
       loadQuestionImage (name) {
-        console.log('../assets/question-imgs/' + name)
         return require("../assets/question-imgs/" + name)
+      },
+      timeout () {
+        this.choiceChosen = true;
+        this.chosenAnswer = this.question.answers[0]
+        window.clearInterval(progInterval);
       }
     }
   }
@@ -126,5 +162,8 @@
     #question-block {
       width: 100%;
     }
+  }
+  #progress {
+    width: 100%;
   }
 </style>
