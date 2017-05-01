@@ -9,7 +9,7 @@
           <h1 class="mdl-card__title-text">{{ question.text }}</h1>
         </div>
       
-        <div class="mdl-card__media" background="white">
+        <div class="mdl-card__media" background="white" v-if="question.image !== 'noop'">
           <img width="120" :src="loadQuestionImage(question.image)" alt="" />
         </div>
       
@@ -62,14 +62,21 @@
         chosenAnswer: null,
         buttonSelected: null,
         correctAnswer: null,
+        hasImage: false
       }; 
     },
     mounted () {
       let prog = document.querySelector("#progress");
       componentHandler.upgradeAllRegistered();
 
-      this.timeLeft = this.question.time;
-      this.totalTime = this.question.time;
+      let time;
+      if (this.question.time) {
+        time = this.question.time
+      } else {
+        time = 60;
+      }
+      this.timeLeft = time;
+      this.totalTime = time;
 
       progInterval = window.setInterval(() => {
         if (this.timeLeft <= 0) { ; return this.timeout(); }
@@ -110,6 +117,7 @@
       },
       shuffleAnswers: shuffle,
       loadQuestionImage (name) {
+        if (name === 'noop') { return; }
         return require("../assets/question-imgs/" + name)
       },
       timeout () {
