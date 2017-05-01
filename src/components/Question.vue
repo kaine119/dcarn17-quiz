@@ -62,21 +62,20 @@
         chosenAnswer: null,
         buttonSelected: null,
         correctAnswer: null,
-        timeLeft: 10
       }; 
     },
     mounted () {
       let prog = document.querySelector("#progress");
-      let totalTime = 10;
-      this.timeLeft = totalTime;
       componentHandler.upgradeAllRegistered();
-      
+
+      this.timeLeft = this.question.time;
+      this.totalTime = this.question.time;
 
       progInterval = window.setInterval(() => {
         if (this.timeLeft <= 0) { ; return this.timeout(); }
-        prog.MaterialProgress.setProgress(this.timeLeft / totalTime * 100);
+        prog.MaterialProgress.setProgress(this.timeLeft / this.totalTime * 100);
         this.timeLeft = this.timeLeft - 0.1;
-
+        console.log(this.timeLeft, "and counting")
       }, 100);
     },
     watch: {
