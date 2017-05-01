@@ -1,15 +1,17 @@
 <template>
   <div id="app">
-    <question v-bind:question="currentQuestion" v-on:choice="checkChoice" v-if="playing"></question>
+    <question v-bind:question="currentQuestion" v-on:choice="checkChoice" v-if="playing && !intermission"></question>
     <score v-bind:score="score" v-if="!playing" v-on:restart="restart()"></score>
+    <achievement v-if="intermission" v-bind:achievement="achievements[counter]" v-on:next="intermission = false"></achievement>
   </div>
 </template>
 
 <script>
 import data from './assets/data';
-import shuffle from './utils/shuffle'
+import shuffle from './utils/shuffle';
 import Question from './components/Question.vue';
-import Score from './components/Score.vue'
+import Score from './components/Score.vue';
+import Achievement from './components/Achievement.vue'
 
 require('material-design-lite');
 
@@ -20,12 +22,15 @@ export default {
       counter: 0,
       score: 0,
       currentQuestion: shuffle(data.questions)[0],
-      playing: true
+      achievements: shuffle(data.achievements),
+      playing: true,
+      intermission: false
     }
   },
   components: {
     Question,
-    Score
+    Score,
+    Achievement
   },
   methods: {
     checkChoice (choice) {
@@ -34,6 +39,7 @@ export default {
       }
       this.counter += 1;
       if (!(this.counter > 2)) {
+        this.intermission = true;
         this.currentQuestion = data.questions[this.counter]
         this.currentQuestion.answers = shuffle(this.currentQuestion.answers);
       } else {
@@ -66,7 +72,11 @@ export default {
   -ms-align-items: center;
   align-items: center;
   color: #2c3e50;
-  padding: 1em;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  -o-flex-direction: column;
+  flex-direction: column;
 }
 
 h1, h2 {
