@@ -2,6 +2,9 @@
 // achievement images are expected to be in src/assets/achievement-imgs.
 // DO NOT add beginning '/'
 
+// If the question does not have any images, put "noop" in the image section.
+// The loadImage() functions will catch this and not do anything.
+
 export default {
   questions: [
     {
@@ -65,7 +68,7 @@ export default {
       time: 60
     },
     {
-      text: "The above photo is taken at Dunman High School’s...",
+      text: "This photo is taken at Dunman High School’s...",
       image: "1083_03.jpg",
       answers: [
         { text: "Media Resource Library (MRL)", correct: true },
@@ -93,6 +96,60 @@ export default {
         { text: "正心楼", correct: false }
       ],
       time: 60
+    },
+    {
+      text: "Which of the following is our school’s mission?",
+      image: "noop",
+      answers: [
+        { text: "We are committed to building character, enhancing confidence and nurturing talents in all our pupils.", correct: false },
+        { text: "To nurture our students to Care, to Serve, and to Lead.", correct: true },
+        { text: "Home of scholars and leaders who serve with honour.", correct: false }
+      ]
+    },
+    {
+      text: "What does the red colour in our school crest represent?",
+      image: "Dunman-High-School2-1024x1024.jpg",
+      answers: [
+        { text: "Passion and drive for success", correct: true },
+        { text: "Universal brotherhood and equality", correct: false },
+        { text: "Courage and compassion", correct: false }
+      ]
+    },
+    {
+      text: "How many stalls are there in Dunman High School’s canteen?",
+      image: "noop",
+      answers: [
+        { text: "8", correct: false },
+        { text: "13", correct: false },
+        { text: "16", correct: true }
+      ]
+    },
+    {
+      text: "How many clubs and societies are there in total in Dunman High? (Both Junior High and Senior High)",
+      image: "noop",
+      answers: [
+        { text: "10", correct: false },
+        { text: "14", correct: false },
+        { text: "20", correct: true }
+      ]
+    },
+    {
+      text: "When was Dunman High School established?",
+      image: "noop",
+      answers: [
+        { text: "14 October 1956", correct: true },
+        { text: "15 September 1960", correct: false },
+        { text: "16 February 1971", correct: false }
+      ]
+    },
+    {
+      text: "The statue in the middle of the 正心园 is that of...",
+      image: "76315221.jpg",
+      answers: [
+        { text: "Sir Stamford Raffles", correct: false },
+        { text: "Confucius", correct: true },
+        { text: "Joseph-Louis Lagrange", correct: false }
+      ]
     }
   ],
   achievements: [
