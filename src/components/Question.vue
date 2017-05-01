@@ -1,40 +1,41 @@
 <template>
   <section>
-
-
-    <!-- Card with question in it -->
-    <div id="question-block" class="mdl-card mdl-shadow--2dp">
-
-      <div class="mdl-card__title">
-        <h1 class="mdl-card__title-text">{{ question.text }}</h1>
-      </div>
-
-      <div class="mdl-card__media" background="white">
-        <img width="120" :src="loadQuestionImage(question.image)" alt="" />
-      </div>
-
-      <div id="progress" class="mdl-progress mdl-js-progress"></div>
-
-      <div class="mdl-card__supporting-text mdl-card--border" v-if="!choiceChosen">
-
-        <div v-for="answer in question.answers"  href="#" class="answer">
-          <h4 @click="submitChoice(answer)">{{ answer.text }}</h4>
-        </div>
-
-      </div>
-
-      <div class="mdl-card__supporting-text" v-if="choiceChosen">
-        <h6 v-if="(timeLeft > 0) && !chosenAnswer.correct">You chose:</h6>
-        <h4 v-if="(timeLeft > 0) && !chosenAnswer.correct" v-bind:class="{'mdl-color-text--red-500': !chosenAnswer.correct}">{{ chosenAnswer.text }}</h4>
-        <h6 v-if="(timeLeft > 0) && !chosenAnswer.correct">The correct answer is</h6>
-        <h6 v-if="(timeLeft > 0) && chosenAnswer.correct">You're correct! The answer is</h6>
-        <div v-if="timeLeft <= 0">
-          <h4>You ran out of time!</h4>
-          <h6>The answer is</h6>
-        </div>
-        <h4 class="mdl-color-text--green-500" v-for="answer in question.answers" v-if="answer.correct">{{ answer.text }}</h4>
-      </div>
+    <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--hide-phone"></div>
+      <!-- Card with question in it -->
+      <div id="question-block" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--6-col">
       
+        <div class="mdl-card__title">
+          <h1 class="mdl-card__title-text">{{ question.text }}</h1>
+        </div>
+      
+        <div class="mdl-card__media" background="white">
+          <img width="120" :src="loadQuestionImage(question.image)" alt="" />
+        </div>
+      
+        <div id="progress" class="mdl-progress mdl-js-progress"></div>
+      
+        <div class="mdl-card__supporting-text mdl-card--border" v-if="!choiceChosen">
+      
+          <div v-for="answer in question.answers"  href="#" class="answer">
+            <h4 @click="submitChoice(answer)">{{ answer.text }}</h4>
+          </div>
+      
+        </div>
+      
+        <div class="mdl-card__supporting-text" v-if="choiceChosen">
+          <h6 v-if="(timeLeft > 0) && !chosenAnswer.correct">You chose:</h6>
+          <h4 v-if="(timeLeft > 0) && !chosenAnswer.correct" v-bind:class="{'mdl-color-text--red-500': !chosenAnswer.correct}">{{ chosenAnswer.text }}</h4>
+          <h6 v-if="(timeLeft > 0) && !chosenAnswer.correct">The correct answer is</h6>
+          <h6 v-if="(timeLeft > 0) && chosenAnswer.correct">You're correct! The answer is</h6>
+          <div v-if="timeLeft <= 0">
+            <h4>You ran out of time!</h4>
+            <h6>The answer is</h6>
+          </div>
+          <h4 class="mdl-color-text--green-500" v-for="answer in question.answers" v-if="answer.correct">{{ answer.text }}</h4>
+        </div>
+        
+      </div>
     </div>
 
     
@@ -129,17 +130,11 @@
     display: -ms-flex;
     display: -o-flex;
     display: flex;
-    -ms-align-items: center;
-    align-items: center;
-    justify-content: center;
     -webkit-flex-direction: column;
     -moz-flex-direction: column;
     -ms-flex-direction: column;
     -o-flex-direction: column;
     flex-direction: column;
-  }
-  #question-block {
-    width: 50%;
   }
   img {
     width: 100%;
@@ -160,11 +155,11 @@
       margin-bottom: 10px;
       z-index: 10;
     }
-    #question-block {
-      width: 100%;
-    }
   }
   #progress {
+    width: 100%;
+  }
+  .mdl-grid {
     width: 100%;
   }
 </style>
