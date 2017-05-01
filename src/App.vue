@@ -51,6 +51,7 @@ export default {
       this.score = 0;
       this.currentQuestion = shuffle(data.questions)[0];
       this.playing = true;
+      this.achievements = shuffle(data.achievements)
     }
   }
 }
