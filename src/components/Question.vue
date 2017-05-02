@@ -71,9 +71,9 @@
 
       let time;
       if (this.question.time) {
-        time = this.question.time
+        time = this.question.time;
       } else {
-        time = 60;
+        time = 45;
       }
       this.timeLeft = time;
       this.totalTime = time;
