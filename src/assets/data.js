@@ -21,7 +21,7 @@ export default {
       image: "Dunman-High-School2-1024x1024.jpg",
       answers: [
         { text: "Mr. Sun Hwan Sin", correct: false },
-        { text: "Liu Kang", correct: true },
+        { text: "Mr. Liu Kang", correct: true },
         { text: "Mr. Tan Thiam Hock", correct: false }
       ],
     },
@@ -116,15 +116,6 @@ export default {
       ]
     },
     {
-      text: "How many clubs and societies are there in total in Dunman High? (Both Junior High and Senior High)",
-      image: "noop",
-      answers: [
-        { text: "10", correct: false },
-        { text: "14", correct: false },
-        { text: "20", correct: true }
-      ]
-    },
-    {
       text: "When was Dunman High School established?",
       image: "noop",
       answers: [
@@ -147,27 +138,27 @@ export default {
     {
       title: "NIC Face-off 2016",
       image: "image9.jpg",
-      body: "The NIC App Development Face-off is a first of its kind competition that brings together the top teams from four National Infocomm Competitions organised by IMDA for an epic showdown. Last year, we had a team consisting of Senior High ICC members who won the first place in the NIC Face-off, and they were fully sponsored by IMDA to APICTA 2016 (Asia Pacific ICT Alliance) in Taiwan!"
+      body: "The NIC App Development Face-off is a first of its kind competition that brings together the top teams from four National Infocomm Competitions organised by IMDA for an epic showdown. In 2016, we had a team consisting of Senior High ICC members who won the first place in the NIC Face-off, and they were fully sponsored by IMDA to APICTA 2016 (Asia Pacific ICT Alliance) in Taiwan!"
     },
     {
       title: "FOSSASIA 2016/7 VIA",
       image: "image5.jpg",
-      body: "Every year, Dunman High ICC members volunteer at the annual FOSSASIA OpenTech Summit in Singapore. This year, the 2017 FOSSASIA Summit was held at the Science Centre Singapore in March, with over 900 attendees and 50 volunteers!"
+      body: "Since 2016, Dunman High ICC members volunteer at the annual FOSSASIA OpenTech Summit in Singapore. This year, the 2017 FOSSASIA Summit was held at the Science Centre Singapore in March, with over 900 attendees and 50 volunteers!"
     },
     {
       title: "ICC Bonding Day",
       image: "image8.jpg",
-      body: "During the June and December holidays, an official Bonding Day is held to foster closer ties between ICC members. In other words, Bonding Day is essentially a day where members come together to have fun and get to know each other better!"
+      body: "During the December holidays, an official Bonding Day is held to foster closer ties between ICC members. In other words, Bonding Day is essentially a day where members come together to have fun and get to know each other better!"
     },
     {
       title: "SITF Awards 2016",
       image: "image1.jpg",
-      body: "Did you know? DHS ICC members participate in the SITF Awards every year, which recognises innovative ICM (Infocomm Media) solutions developed locally. Last year, we even had two teams clinching the tied second position for this prestigious competition!"
+      body: "Did you know? DHS ICC members participate in the SITF Awards every year, which recognises innovative ICM (Infocomm Media) solutions developed locally. In 2016, we even had two teams clinching the tied second position for this prestigious competition!"
     },
     {
       title: "Google-Code in Top Participating School",
       image: "image14.jpg",
-      body: "Did you know? Dunman High School has been the top participating school for Google Code-in, an international open-source competition for teenagers, for four years in a row! This year, we even  had 1 Grand Prize Winner (who went on a free trip to Google Mountain View California, USA) and 1 Finalist for Google Code-in!"
+      body: "Did you know? Dunman High School has been the top participating school for Google Code-in, an international open-source competition for teenagers, for four years in a row! This year, we even  had 1 Grand Prize Winner (who will go on a free trip to Google Mountain View California, USA) and 1 Finalist for Google Code-in!"
     }
   ]
 };
