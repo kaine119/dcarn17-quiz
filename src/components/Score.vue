@@ -2,11 +2,12 @@
   <section class="mdl-grid">
     <div v-if="mainMenu" class="mdl-cell mdl-cell--1-col mdl-cell-3-col-tablet mdl-cell--1-col-phone"></div>
     <div class="mdl-cell mdl-cell--10-col mdl-shadow--2dp" id="main" v-if="mainMenu">
-      <h1 class="mdl-card__title">How well do you know Dunman High?</h1>
-
-      <div class="mdl-card--border">
+      <h1>How well do you know Dunman High?</h1>
+      
+      <div>
         <button class="mdl-button mdl-button--raised mdl-button--colored " @click="restart()">Play</button>
       </div>
+      <img :src="loadImage()">
     </div>
     <div v-if="!mainMenu" class="mdl-cell mdl-cell--5-col mdl-cell--3-col-tablet mdl-cell--1-col-phone"></div>
     <div class="mdl-cell mdl-cell--2-col" id="main" v-if="!mainMenu">
@@ -20,6 +21,7 @@
 </template>
 
 <script>
+
   export default {
     name: "score",
     props: ["score"],
@@ -34,6 +36,9 @@
       },
       quit () {
         this.mainMenu = true;
+      },
+      loadImage () {
+        return require("../assets/question-imgs/Dunman-High-School2-1024x1024.jpg")
       }
     }
   };
@@ -57,5 +62,8 @@
   }
   button {
     margin-bottom: 1em;
+  }
+  img {
+    width: 30em;
   }
 </style>
