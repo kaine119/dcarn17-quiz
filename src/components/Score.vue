@@ -1,9 +1,20 @@
 <template>
   <section class="mdl-grid">
-    <div class="mdl-cell mdl-cell--5-col mdl-cell--3-col-tablet mdl-cell--1-col-phone"></div>
-    <div class="mdl-cell mdl-cell--2-col" id="main">
+    <div v-if="mainMenu" class="mdl-cell mdl-cell--1-col mdl-cell-3-col-tablet mdl-cell--1-col-phone"></div>
+    <div class="mdl-cell mdl-cell--10-col mdl-shadow--2dp" id="main" v-if="mainMenu">
+      <h1 class="mdl-card__title">How well do you know Dunman High?</h1>
+
+      <div class="mdl-card--border">
+        <button class="mdl-button mdl-button--raised mdl-button--colored " @click="restart()">Play</button>
+      </div>
+    </div>
+    <div v-if="!mainMenu" class="mdl-cell mdl-cell--5-col mdl-cell--3-col-tablet mdl-cell--1-col-phone"></div>
+    <div class="mdl-cell mdl-cell--2-col" id="main" v-if="!mainMenu">
       <h1 class="score">Score: {{ score }}</h1>
-      <button class="mdl-button mdl-button--raised mdl-button--colored" @click="restart()">Play Again</button>
+
+      <button class="mdl-button mdl-button--raised mdl-button--colored"  @click="restart()">Play again</button> 
+      <button class="mdl-button mdl-button--raised mdl-button--colored" @click="quit()" >Quit</button>
+      
     </div>
   </section>
 </template>
@@ -12,16 +23,24 @@
   export default {
     name: "score",
     props: ["score"],
+    data () {
+      return {
+        mainMenu: false
+      }
+    },
     methods: {
       restart () {
         this.$emit("restart");
+      },
+      quit () {
+        this.mainMenu = true;
       }
     }
   };
 </script>
 
 <style scoped>
-  #main {
+  #main, #main-menu {
     display: -webkit-flex;
     display: -moz-flex;
     display: -ms-flex;
@@ -34,5 +53,9 @@
     flex-direction: column;
     -ms-align-items: center;
     align-items: center;
+    justify-content: center;
+  }
+  button {
+    margin-bottom: 1em;
   }
 </style>
